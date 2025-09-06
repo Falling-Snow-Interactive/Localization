@@ -1,0 +1,2 @@
+# fsi.localization
+Localization package.

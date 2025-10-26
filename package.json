@@ -13,7 +13,7 @@
     "email": "kiradinan.dev@gmail.com"
   },
   "dependencies": {
-    "com.unity.localization": "1.5.4"
+    "com.unity.localization": "1.5.8"
   },
   "hideInEditor": false
 }

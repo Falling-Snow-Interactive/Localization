@@ -11,7 +11,11 @@ namespace Fsi.Localization
 		
 		public override VisualElement CreatePropertyGUI(SerializedProperty property)
 		{
-			Box foldoutBox = new(){style = { paddingLeft = Indent + property.depth * Indent } };
+			Box foldoutBox = new()
+			                 {
+				                 style = { paddingLeft = Indent + property.depth * Indent },
+				                 tooltip = property.tooltip,
+			                 };
 
 			SerializedProperty entryProp = property.FindPropertyRelative("entry");
 			PropertyField entryField = new(entryProp){ label = $" {property.displayName}" };

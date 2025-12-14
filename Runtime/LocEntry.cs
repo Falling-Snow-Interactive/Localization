@@ -5,10 +5,6 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 namespace Fsi.Localization
 {
 	[Serializable]
@@ -39,12 +35,13 @@ namespace Fsi.Localization
 		    // Avoid calling into Localization/AssetDatabase during editor domain backup/update.
 		    // When the editor is compiling or updating, synchronous lookups can touch AssetDatabase
 		    // and trigger 'restricted during domain backup' errors. In those cases, return fallback.
-#if UNITY_EDITOR
-		    if (!Application.isPlaying && (EditorApplication.isCompiling || EditorApplication.isUpdating))
+			#if UNITY_EDITOR
+		    if (!Application.isPlaying && (UnityEditor.EditorApplication.isCompiling 
+		                                   || UnityEditor.EditorApplication.isUpdating))
 		    {
 		        return fallback;
 		    }
-#endif
+		    #endif
 
 		    return entry.GetLocalizedString();
 		}
